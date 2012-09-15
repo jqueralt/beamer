@@ -1,0 +1,381 @@
+% Basat en: /cvsroot/latex-beamer/latex-beamer/solutions/conference-talks/conference-ornate-20min.en.tex,v 1.6 2004/10/07 20:53:08 tantau Exp $
+% Copyright 2004 by Till Tantau <tantau@users.sourceforge.net>.
+% In principle, this file can be redistributed and/or modified under
+% the terms of the GNU Public License, version 2.
+%
+% However, this file is supposed to be a template to be modified
+% for your own needs. For this reason, if you use this file as a
+% template and not specifically distribute it as part of a another
+% package/program, I grant the extra permission to freely copy and
+% modify this file as you see fit and even to delete this copyright
+% notice. 
+
+%modificat per Joan Queralt <jqueralt@gmail.com>
+%==================
+% definició de la classe de document
+\documentclass{beamer}
+% veure el manual de l'usuari per modificar el resultat final a <article> (per ser imprès en paper)
+\mode<presentation>
+{
+%\usetheme{Boadilla}  
+%\usetheme{Antibes}   %crea un índex en arbre a cada diapo
+%\usetheme{JuanLesPins}
+
+%\useinnertheme{inmargin} %posa els títols de bloc al marge esquerre
+%\useoutertheme[hooks]{tree} %crea un índex en arbre a cada diapo
+%\usefonttheme[stillsansserifmath]{serif} %lletra amb serif excepte les mates
+
+\usecolortheme{beaver} 
+  \usetheme{Manhattan} % semblant a keynote
+  %\usecolortheme{crane} %hi ha més colors per triar
+  % per mostrar textos semiptransparents:
+  \setbeamercovered{transparent} 
+}
+% ============= definició d'entorn teorema basat en l'original Theorem
+\newtheorem{teorema}[theorem]{Teorema}
+
+% ============= paquets de llenguatge 
+\usepackage[catalan]{babel}
+%\usepackage[latin1]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+
+
+% ============= paquet de tipus de lletra
+%per defecte beamer usa Computer Modern
+%\usepackage{times} 
+\usepackage{bera}   %  amb i sans serif
+
+\usepackage{amsmath}
+
+% ============= dades del document
+\title[Beamer]{Actualització de beamer}
+
+\subtitle{Novetats}
+
+\author[Joan Queralt]{Joan Queralt Gil}
+
+\institute[cata\LaTeX] 
+{
+  cata\LaTeX{}\\
+  El lloc català de \LaTeX{}
+}
+
+\date[30.07.2012]{\today}
+
+\titlegraphic{\includegraphics[scale=.1]{qrplanet}}
+
+
+\subject{Tema de la presentació} % Només apareixerà a les propietats del document PDF
+
+% =============== final del preàmbul
+
+\begin{document}
+
+% ++++++++ 1er marc amb el títol
+\begin{frame}
+  \titlepage
+  \transblindshorizontal
+\end{frame}
+
+% ++++++++ 2on marc amb la Taula de continguts TDC
+
+\begin{frame}
+  \frametitle{Taula de continguts} %Títol del marc
+  \framesubtitle{transblindsvertical}
+  
+  \tableofcontents[pausesections] % TDC
+  \transblindsvertical
+   
+
+  % You might wish to add the option [pausesections]
+\end{frame}
+
+% +++++++++ Aquí comença la presentació
+\section{Marcs} % les seccions i subseccions són fora dels marcs
+\subsection{Enumeracions}
+
+% +++++++++ 3er marc
+
+\begin{frame}
+  \frametitle{Títol del marc}
+  \framesubtitle{transboxin}
+   \begin{itemize}
+		  \item 
+		    un punt
+		  \item
+		    un \texttt{altre} punt
+		  \item
+		  un tercer punt
+  \end{itemize}
+  \transboxin
+  
+
+\end{frame}
+
+% +++++++++ 4rt marc que genera vàries diapositives o pàgines al PDF
+\begin{frame}
+  \frametitle{Un marc = n diapositives}
+  \framesubtitle{transboxout}
+
+  Un sol marc pot generar diferents diapositives\dots
+  \begin{itemize}
+  \item usant el comandament \texttt{pause}:
+    \begin{itemize}
+    \item
+      primer punt
+      \pause
+    \item    
+      segon punt
+    \end{itemize}
+  \item
+    usant especificacions de diapositiva:
+    \begin{itemize}
+    \item<3->
+      punt no.1
+    \item<4->
+      punt no.2
+    \end{itemize}
+  \item
+    usant el commandament \texttt{uncover}
+    \begin{itemize}
+      \uncover<5->{\item
+        punt primer}
+      \uncover<6->{\item
+        punt segon}
+    \end{itemize}
+  \end{itemize}
+  \transboxout
+  
+\end{frame}
+
+\subsection{Columnes}
+% +++++++++  marc
+\begin{frame}
+  \frametitle{Marc amb columns}
+  \framesubtitle{transdissolve[duration=0.5]}
+  \begin{columns}
+    \column{.5\textwidth}
+			  \begin{itemize}
+				\item punt 1
+				\item punt 2
+			  \end{itemize}
+    \column{.5\textwidth}
+			  \begin{enumerate}
+				\item punt 1
+				\item punt 2
+			  \end{enumerate}
+  \end{columns} 
+  \transdissolve[duration=0.5]
+  
+\end{frame}
+% +++++++++  marc
+\begin{frame}
+  \frametitle{Un altre marc amb columns i block}
+  \framesubtitle{transglitter[direction=90]}
+  \begin{columns}
+    \column{.45\textwidth}
+			    \begin{block}{Títol del bloc}
+				\begin{itemize}
+					\item punt primer
+					\item punt segon
+				\end{itemize}
+\end{block}
+    \column{.45\textwidth}
+			    \begin{block}{Títol del bloc}
+				\begin{itemize}
+					\item punt 1
+					\item punt 2
+				\end{itemize}
+\end{block}
+  \end{columns} 
+  \transglitter[direction=90]
+  
+
+\end{frame}
+% +++++++++  marc
+\section{Entorns}
+\subsection{Blocs}
+% +++++++++  marc
+\begin{frame}
+  \frametitle{Marc amb entorn block}
+  \framesubtitle{transsplitverticalin}
+  \begin{block}{Títol del bloc}
+				\begin{itemize}
+					\item punt primer
+					\item punt segon
+				\end{itemize}
+	\end{block} 
+
+	\transsplitverticalin
+	
+\end{frame}
+% +++++++++  marc
+\begin{frame}
+  \frametitle{Marc amb entorn Teorema}
+  \framesubtitle{transsplitverticalout}
+  \begin{teorema}{Teorema 1}
+				\begin{itemize}
+					\item Tal
+					\item Qual
+				\end{itemize}
+\end{teorema} 
+ 	\transsplitverticalout
+	
+
+\end{frame}
+% +++++++++  marc
+\begin{frame}
+  \frametitle{Marc amb entorn Example}
+  \framesubtitle{transwipe[direction=90]}
+
+\begin{exampleblock}{Exemple}
+Exemple de bloc d'exemple:
+   \begin{itemize}
+	\item Tal
+	\item Qual
+   \end{itemize}
+\end{exampleblock}
+
+\transwipe[direction=90]
+
+\end{frame}
+% +++++++++  marc
+\begin{frame}
+  \frametitle{Marc amb entorn Proof}
+    \framesubtitle{transblindshorizontal}
+
+  \begin{proof}{Prova 1}
+				\begin{itemize}
+					\item Tal
+					\item Qual
+				\end{itemize}
+\end{proof} 
+\transblindshorizontal
+\end{frame}
+
+
+% +++++++++  marc
+\begin{frame}
+  \frametitle{Marc amb entorn Alert}
+    \framesubtitle{transblindshorizontal}
+
+      \begin{alertblock}{Atenció}
+           $H_2 SO_4 + Zn \rightarrow ZnSO_4 + H_2\uparrow $
+      \end{alertblock}
+\transblindshorizontal
+\end{frame}
+
+% +++++++++  marc
+\begin{frame}
+  \frametitle{Marcs i quadres de text}
+    \framesubtitle{Un post-it}
+      \setbeamercolor{postit}{fg=black,bg=yellow}  
+      \begin{beamercolorbox}[sep=1em,wd=5cm,shadow=true,rounded=true]{postit}
+            \centering            
+            Recorda-te'n!!
+      \end{beamercolorbox}
+\end{frame}
+     
+% +++++++++  marc
+\begin{frame}
+  \frametitle{Marcs i quadres de text 2}
+    \framesubtitle{Un text emmarcat}     
+      \begin{beamerboxesrounded}[upper=block body,lower=block body,shadow=true,width=6cm]{Caixa arrodonida de 6 cm}
+       \centering
+             $3 H_2 + N_2 \rightarrow 2 NH_3$
+      \end{beamerboxesrounded}
+
+  \transwipe[direction=90]
+\end{frame}
+
+
+\subsection{Botons}
+% +++++++++  marc
+\begin{frame}
+  \frametitle{Botons}
+    \framesubtitle{transwipe[direction=-45]}
+    \begin{block}{Botons amb enllaços}
+           \begin{itemize}
+					\item \href{http://phobos.xtec.cat/jqueralt}{\beamerbutton{cata\LaTeX{}}}
+		            \item \hyperlinkpresentationstart{\beamerbutton{Inici}}
+		            \item \hyperlinkpresentationend{\beamerbutton{Final}}
+		            \item \hyperlinksectionstart{\beamerbutton{Inici de secció}}
+		            \item \hyperlinksectionend{\beamerbutton{Final de secció}}
+		   \end{itemize}
+	\end{block} 	
+  \transwipe[direction=-45]
+\end{frame}
+
+
+
+
+
+
+
+\section{Aplicacions}
+% +++++++++  marc
+\begin{frame}
+  \frametitle{Matemàtiques}
+    \framesubtitle{transwipe[direction=45]}
+  
+    \begin{block}{Equació de segon grau completa}
+    \begin{align*}
+    a \cdot x^{2}+ b \cdot x + c &= 0\\
+  	x &=\frac{-b\pm\sqrt{b^{2}-4 \cdot a \cdot c}}{2 \cdot a}
+    \end{align*}
+  \end{block}
+  \transwipe[direction=45]
+\end{frame}
+% +++++++++  marc
+\begin{frame}
+  \frametitle{Química}
+  \framesubtitle{transduration{2}}
+  \begin{block}{Obtenció del sulfat amònic}
+ 	\[H_{2}SO_{4} + 2 \cdot NH_{3} \rightarrow (NH_{4})_{2}SO_{4}
+\]
+\end{block}
+\transduration{2}
+\end{frame}
+% +++++++++  marc
+\begin{frame}
+  \frametitle{Física}
+  \framesubtitle{transwipe[direction=270]}
+  \begin{block}{Força}
+  	\[\vec{F} = m \cdot \vec{a}
+  	\]
+  	\end{block}
+  	\transwipe[direction=270]
+\end{frame}
+
+\section*{Resum}
+% +++++++++  marc
+\begin{frame}
+  \frametitle<presentation>{Resum}
+  \framesubtitle{transwipe[direction=90]}
+  \begin{itemize}
+			  \item
+			    La \alert{primera idea} important.
+			    \pause
+			  \item
+			    La \alert{segona idea} important.
+			    \pause
+			  \item
+			    La \alert{tercera idea} important.
+  \end{itemize} 
+  \transwipe[direction=90]
+\end{frame}
+
+% =============== opcional: apèndix o bibliografia
+\appendix
+\section<presentation>*{\appendixname}
+\subsection<presentation>*{Crèdits}
+% +++++++++  marc
+\begin{frame}
+  \frametitle<presentation>{Fet amb}
+  \framesubtitle{transdissolve[duration=0.5]}
+   Fet amb \alert{programari lliure}: \textbf{beamer} de \LaTeX{} 
+   \transdissolve[duration=0.5]
+\end{frame}
+
+\end{document}
